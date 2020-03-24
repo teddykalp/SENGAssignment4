@@ -5,12 +5,43 @@
 	<link rel="stylesheet" type="text/css" href="home-style.css">
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>	
-	<div class = "name-container">
-		<h1>Ultimate Connect 4</h1>	
-		<h4 id = "welcome"><h4>
-		<input type="text" name="user" id = "user">
-		<h4>You can edit your name</h4>
+<body>
+	<div class = "start">	
+		<div class = "name-container">
+			<h1>Ultimate Connect 4</h1>	
+			<h4 id = "welcome"></h4>
+			<input type="text" name="user" id = "user">
+			<h4>You can edit your name</h4>
+		</div>
+		<br><br>
+		<div class="all-container">
+	    	<div class = "code-container">
+		    	<div class = "prompt">
+		    		<h5>If you're trying to play a Connect-4 with your friend, send <b>this code</b> to them and tell them enter it on the right to play</h5>
+		    		<p id = "user-code"></p>
+		    		<h5>The game will begin when the code is entered from the other user</h5>
+		    	</div>
+	   		 </div>
+	    	<div class = "play-container">
+	    		<div class = "input-container">
+	    			<h5>To join an existing game enter the code provided</h5>
+	    			<input type="text" name="code" id = "code"><br><br>
+	    			<button type="button" class="btn btn-warning">Join Game</button>
+	    		</div>
+	    		<br><br>
+	    		<div class = "random-container">
+	    			<h5>To join an random game press the button below</h5>
+	    			<button type="button" class="btn btn-warning">Random Game</button>
+	    		</div>
+	    	</div>
+		</div>
+		<br><br>
+		<div class = "image">
+			<img src="imgs/connect4.jpeg">
+		</div>
+	</div>
+	<div class = "game">
+		Helllooooooooooooo
 	</div>
 
 
@@ -18,5 +49,6 @@
 	<script src="/socket.io/socket.io.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+	<script src = "home.js"></script>
 </body>
 </html>
