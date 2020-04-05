@@ -4,6 +4,7 @@
 	<title>Welcome</title>
 	<link rel="stylesheet" type="text/css" href="home-style.css">
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Spicy+Rice&display=swap" rel="stylesheet">
 </head>
 <body>
 	<div class = "start">	
@@ -26,12 +27,14 @@
 	    		<div class = "input-container">
 	    			<h5>To join an existing game enter the code provided</h5>
 	    			<input type="text" name="code" id = "code"><br><br>
-	    			<button type="button" class="btn btn-warning">Join Game</button>
+	    			<button type="button" class="btn btn-warning" id = "join">Join Game</button>
+	    			<p id = "errorCode"></p>
 	    		</div>
 	    		<br><br>
 	    		<div class = "random-container">
 	    			<h5>To join an random game press the button below</h5>
-	    			<button type="button" class="btn btn-warning">Random Game</button>
+	    			<button type="button" class="btn btn-warning" id = "random">Random Game</button>
+	    			<p id = "look"></p>
 	    		</div>
 	    	</div>
 		</div>
@@ -40,15 +43,213 @@
 			<img src="imgs/connect4.jpeg">
 		</div>
 	</div>
+
 	<div class = "game">
-		Helllooooooooooooo
+		<h1 style = "text-align:center;">Connect 4</h1>
+		<div class="container" id = "board">
+		<h2><span class = "heading">Your Name: </span><span id = "Player"></span></h2>
+		<h2><span class = "heading">Opponent Name: </span><span id = 'Opponent'></span></h2>
+		<h3><span class = "heading">Current Turn: </span><span id = "current"></span></h3>
+		<h3><span class = "heading" id = "winheader">Winner: </span><span id = "win"></span></h3>
+		  <div class="row">
+		    <div class = "butt" id = "col0">
+		      <button class = "drop" onclick= "dropChip(0)"><b>Drop Here</b></button>
+		    </div >
+		    <div class = "butt" id = "col1">
+		      <button class = "drop" onclick= "dropChip(1)"><b>Drop Here</b></button>
+		    </div>
+		    <div class = "butt" id = "col2">
+		      <button class = "drop" onclick= "dropChip(2)"><b>Drop Here</b></button>
+		    </div>
+		    <div class = "butt" id = "col3">
+		      <button class = "drop" onclick= "dropChip(3)"><b>Drop Here</b></button>
+		    </div>
+		    <div class = "butt" id = "col4">
+		      <button class = "drop" onclick= "dropChip(4)"><b>Drop Here</b></button>
+		    </div>
+		    <div class = "butt" id = "col5">
+		      <button class = "drop" onclick= "dropChip(5)"><b>Drop Here</b></button>
+		    </div>
+		    <div class = "butt" id = "col6">
+		      <button class = "drop" onclick= "dropChip(6)"><b>Drop Here</b></button>
+		    </div>
+		  </div>
+		  <div class="row" id = "0">
+		  	 <div class = "cell" id = "00">
+		      
+		    </div>
+		    <div class = "cell" id = "01">
+		      
+		    </div>
+		    <div class = "cell" id = "02">
+		      
+		    </div>
+		    <div class="cell" id = "03">
+		      
+		    </div>
+		    <div class="cell" id = "04">
+		      
+		    </div>
+		    <div class="cell" id = "05">
+		      
+		    </div>
+		    <div class="cell" id = "06">
+		      
+		    </div>
+		  </div>
+		  <div class="row" id = "1">
+		  	<div class="cell" id = "10">
+		      
+		    </div>
+		    <div class="cell" id = "11">
+		      
+		    </div>
+		    <div class="cell" id = '12'>
+		      
+		    </div>
+		    <div class="cell" id = '13'>
+		      
+		    </div>
+		    <div class="cell" id = '14'>
+		      
+		    </div>
+		    <div class="cell" id = '15'>
+		      
+		    </div>
+		    <div class="cell" id = '16'>
+		      
+		    </div>
+		  </div>
+		  <div class="row" id = "2">
+		  	<div class="cell" id = '20'>
+		      
+		    </div>
+		    <div class="cell" id = '21'>
+		      
+		    </div>
+		    <div class="cell" id = '22'>
+		      
+		    </div>
+		    <div class="cell" id = '23'>
+		      
+		    </div>
+		    <div class="cell" id = '24'>
+		      
+		    </div>
+		    <div class="cell" id = '25'>
+		      
+		    </div>
+		    <div class="cell" id = '26'>
+		      
+		    </div>
+		  </div>
+		  <div class="row" id = "3">
+		    <div class="cell" id = "30">
+		      
+		    </div>
+		    <div class="cell" id = "31">
+		      
+		    </div>
+		    <div class="cell" id = "32">
+		      
+		    </div>
+		    <div class="cell" id = "33">
+		      
+		    </div>
+		    <div class="cell" id = "34">
+		      
+		    </div>
+		    <div class="cell" id = '35'>
+		      
+		    </div>
+		    <div class="cell" id = '36'>
+		      
+		    </div>
+		  </div>
+		  <div class="row" id = "4">
+		    <div class="cell" id = '40'>
+		      
+		    </div>
+		    <div class="cell" id = '41'>
+		      
+		    </div>
+		    <div class="cell" id = '42'>
+		      
+		    </div>
+		    <div class="cell" id = '43'>
+		      
+		    </div>
+		    <div class="cell" id = '44'>
+		      
+		    </div>
+		    <div class="cell" id = '45'>
+		      
+		    </div>
+		    <div class="cell" id = '46'>
+		      
+		    </div>
+		  </div>
+		  <div class="row" id = "5">
+		    <div class="cell" id = '50'>
+		      
+		    </div>
+		    <div class="cell" id = '51'>
+		      
+		    </div>
+		    <div class="cell" id = '52'>
+		      
+		    </div>
+		    <div class="cell" id = '53'>
+		      
+		    </div>
+		    <div class="cell" id = '54'>
+		      
+		    </div>
+		    <div class="cell" id = '55'>
+		      
+		    </div>
+		    <div class="cell" id = '56'>
+		      
+		    </div>
+		  </div>
+		  <div class="row" id = "6">
+		    <div class="cell" id = '60'>
+		      
+		    </div>
+		    <div class="cell" id = '61'>
+		      
+		    </div>
+		    <div class="cell" id = '62'>
+		      
+		    </div>
+		    <div class="cell" id = '63'>
+		      
+		    </div>
+		    <div class="cell" id = '64'>
+		      
+		    </div>
+		    <div class="cell" id = '65'>
+		      
+		    </div>
+		    <div class="cell" id = '66'>
+		      
+		    </div>
+		  </div>
+
+		  <br><br>
+		  <div class="row" id = "styles">
+		  	<button class = "col-sm-3" id = "light"><b>Classic Mode</b></button>
+		  	<button class = "col-sm-3" id = "dark"><b>Dark Mode</b></button>
+		  	<button class = "col-sm-3" id = "vibrant"><b>Vibrant Mode</b></button>
+		  </div>
+		</div>
+		
 	</div>
-
-
 	<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 	<script src="/socket.io/socket.io.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
 	<script src = "home.js"></script>
+	<script src="game-logic.js"></script>
 </body>
 </html>
