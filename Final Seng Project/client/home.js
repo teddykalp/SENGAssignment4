@@ -34,9 +34,12 @@ socket.on("code", function(code){
 	$('#user-code').text(gamecode);
 });
 
-socket.on('invalid', function(){
-  console.log('wrongcode');
-  $('#errorCode').text('Invalid Code');
+socket.on('invalid', function(player){
+  name = $('#user').val();
+  if (name == player){
+    console.log('wrongcode');
+    $("#errorCode").text('Invalid Code');
+  }
 });
 
 socket.on('randomGame', function(game){
@@ -53,7 +56,7 @@ socket.on('randomGame', function(game){
       $('#Player').text(user);
       $('#Opponent').text(game.player1);
       setCookie('username', user, 365);
-      socket.emit('gameStarted', game.player1, game.player2);
+      socket.emit('gameStarted', game.player1, game.player2, game.code, 'random');
     }
 });
 
@@ -78,7 +81,7 @@ socket.on('startGame2', function(code,player1,player2){
     $('#Player').text(player2);
     $('#Opponent').text(player1);
     setCookie('username', player2, 365);
-    socket.emit('gameStarted', player1,player2, code);
+    socket.emit('gameStarted', player1,player2, code, 'regular');
   }
 });
 

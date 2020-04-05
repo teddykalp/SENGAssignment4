@@ -61,7 +61,7 @@ io.on("connection", function(socket){
 		}
 		else{
 			console.log('wrongcode');
-			socket.emit('invalid');
+			io.emit('invalid', user);
 		}
 	});
 
@@ -73,12 +73,15 @@ io.on("connection", function(socket){
 
 		var game = checkForRandom(user);
 		if (game != false){
-			console.log(game);
 			io.emit("randomGame", game)
 		};
 	})
 
-	socket.on("gameStarted", function(player1,player2, code){
+	socket.on("gameStarted", function(player1,player2, code, type){
+		if (type == "random"){
+			randomUsers.filter(function(value,index,arr){return value != player1})
+			randomUsers.filter(function(value,index,arr){return value != player2})
+		}
 		io.emit("addPlayers", player1,player2, code);
 	});
 
@@ -133,6 +136,7 @@ function checkForRandom(player1){
 			if(randomUsers[i] != player1){
 				console.log(randomUsers[i])
 				game = {
+					code: (Math.floor(Math.random() * (999999 - 100000 + 1)) + 100000),
 					player1: player1,
 					player2: randomUsers[i]
 				}
