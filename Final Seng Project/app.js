@@ -46,9 +46,6 @@ io.on("connection", function(socket){
 		socket.emit('randomUser', randomName);
 	});
 
-	socket.on("disconnect", function(){
-		console.log('disconnected')
-	})
 
 	/* if a user attempts to join a game using a code */
 	socket.on("checkForGame", function(code, user){
