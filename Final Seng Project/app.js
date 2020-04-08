@@ -47,7 +47,7 @@ io.on("connection", function(socket){
 	});
 
 	socket.on("disconnect", function(){
-		console.log("disconnected");
+		console.log('disconnected')
 	})
 
 	/* if a user attempts to join a game using a code */
@@ -60,7 +60,6 @@ io.on("connection", function(socket){
 			}
 		}
 		else{
-			console.log('wrongcode');
 			io.emit('invalid', user);
 		}
 	});
@@ -90,8 +89,6 @@ io.on("connection", function(socket){
 	});
 
 	socket.on('turnOver', function(player, code){
-		console.log("Sending to "+player);
-		console.log("With game id of " + code)
 		io.emit("changeTurn", player, code);
 	});
 
@@ -130,11 +127,9 @@ function checkForGame(gameCode){
 
 /* checks for a random generated game*/
 function checkForRandom(player1){
-	console.log(randomUsers.length);
 	if (randomUsers.length > 1){
 		for (var i in randomUsers){
 			if(randomUsers[i] != player1){
-				console.log(randomUsers[i])
 				game = {
 					code: (Math.floor(Math.random() * (999999 - 100000 + 1)) + 100000),
 					player1: player1,
@@ -151,7 +146,6 @@ function changeName(oldname,newname){
 	for (var i in games){
 		if(games[i].player1 == oldname){
 			games[i].player1 = newname;
-			console.log(games[i]);
 		}
 	}
 };

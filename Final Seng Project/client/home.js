@@ -13,7 +13,6 @@ var player1Name;
 var Player2Name;
 
 /*if username is empty, generate random one"*/
-
 if (user === ""){
 	socket.emit("getRandomName")
 }
@@ -28,22 +27,24 @@ socket.on("randomUser", function(name){
 	setCookie("username", name, 365);
 });
 
+/* request a random code from the server*/
 socket.emit("code", user);
 socket.on("code", function(code){
   gamecode = code;
 	$('#user-code').text(gamecode);
 });
 
+/* if code entered is invalid, display to user */
 socket.on('invalid', function(player){
   name = $('#user').val();
   if (name == player){
-    console.log('wrongcode');
     $("#errorCode").text('Invalid Code');
   }
 });
 
+
+/* start a randomized game */
 socket.on('randomGame', function(game){
-    console.log(game);
     user = $('#user').val();
     $('.start').hide();
     $('.game').show();
@@ -60,7 +61,7 @@ socket.on('randomGame', function(game){
     }
 });
 
-
+/* start a gamecode game */
 socket.on("startGame1", function(game){
   if (game.code == gamecode){
     player1Name = $('#user').val();;
@@ -92,7 +93,6 @@ $('#join').click(function(e){
   setCookie("username", user, 365);
 	var code = $('#code').val();
   joincode = code;
-  console.log(code);
 	socket.emit('checkForGame', code, user);
 });
 
@@ -100,7 +100,6 @@ $('#join').click(function(e){
 /* joining a randomly generated game */
 $('#random').click(function(e){
   e.preventDefault();
-  console.log("clicked")
 
   user = $('#user').val();
   setCookie("username", user, 365);
@@ -109,6 +108,7 @@ $('#random').click(function(e){
   socket.emit("randomGame", user);
 });
 
+/* used for getting cookies*/
 function getCookie(cookieName) {
     var name = cookieName + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
@@ -125,7 +125,7 @@ function getCookie(cookieName) {
     return "";
 }
 
-
+/* used for setting cookies*/
 function setCookie(cookiename, cookievalue, expirydays) {
   	var d = new Date();
   	d.setTime(d.getTime() + (expirydays * 24 * 60 * 60 * 1000));

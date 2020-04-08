@@ -92,13 +92,13 @@ h5 {
 	padding-top: 60px;
 	padding-left: 12%;
 	width: 50%;
-	height: 10vh;
+	height: 900px;
 	background-color: blue;
-	padding-bottom: 50%;
 }
 
 .butt{
-	font-size: 12px;
+	font-size: 10px;
+	font-size: 0.65vw;
 	border: 3px solid white;
 }
 
